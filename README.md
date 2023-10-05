@@ -1,5 +1,3 @@
-Of course! I'd be happy to guide you through Module00 of C++. Let's start with an explanation of each topic along with simple examples:
-
 ### Introduction to C++
 
 C++ is a powerful, general-purpose programming language that builds upon the foundation of C. It allows you to write efficient and high-performance code while also supporting object-oriented programming principles.
