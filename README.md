@@ -1,7 +1,9 @@
-### Introduction to C++
+# Introduction to C++
 
 C++ is a powerful, general-purpose programming language that builds upon the foundation of C. It allows you to write efficient and high-performance code while also supporting object-oriented programming principles.
 
+
+## C00
 ### Namespaces
 
 Namespaces are used to prevent naming conflicts in C++. They provide a way to organize code into distinct containers. A common use case is to avoid naming clashes between different libraries or your own code. Here's an example:
@@ -174,7 +176,7 @@ public:
     int publicVar;
 
 private:
-    int privateVar;
+    int _privateVar;
 
 protected:
     int protectedVar;
@@ -183,7 +185,7 @@ protected:
 int main() {
     MyClass obj;
     obj.publicVar = 42; // Accessing a public member is allowed
-    // obj.privateVar = 10; // This would result in a compile-time error
+    // obj._privateVar = 10; // This would result in a compile-time error
     // obj.protectedVar = 20; // This would also result in a compile-time error
     return 0;
 }
