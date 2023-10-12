@@ -1,19 +1,22 @@
-NAME = megaphone
+NAME = book
 
 CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g
 
-SRC = megaphone.cpp
+SRC = Contact.cpp PhoneBook.cpp main.cpp
 
 OBJ =  $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
-fclean:
+clean:
+	rm -rf $(OBJ)
+
+fclean:clean
 	rm -rf $(NAME)
 
 re: fclean all
