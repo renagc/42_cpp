@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:55:21 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/12 10:35:35 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:01:25 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ int main(void)
 		if (!std::cin.eof())
 			std::cout << "Choose ADD, SEARCH or EXIT: ";
 		getline(std::cin, prompt);
-		if (std::cin.eof() || !prompt.compare("EXIT"))
+		if (std::cin.eof())
 		{
 			std::cout << std::endl;
 			return (0);
 		}
+		else if (!prompt.compare("EXIT"))
+			return (0);
 		else if (!prompt.compare("ADD"))
 		{
 			suc = book.newContact(index);

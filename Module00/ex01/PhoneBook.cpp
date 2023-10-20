@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:09:00 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/12 10:46:54 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:28:17 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	PhoneBook::searchContact(int index)
 			std::cout << std::endl;
 			return ;
 		}
-		if (prompt.length() == 1 && std::stoi(prompt) < index)
+		if (prompt.length() == 1 && std::atoi(prompt.c_str()) < index)
 		{
-			this->_contacts[index - 1].showPrivate();
+			this->_contacts[std::atoi(prompt.c_str())].showPrivate();
 			return ;
 		}
 		else
@@ -83,12 +83,21 @@ int	PhoneBook::newContact(int index)
 			return (2);
 		}
 	}
-	if (field[0].empty() || field[1].empty() || field[2].empty() || field[3].empty() || field[4].empty())
-		return (0);
+	for (int i = 0; i < 5; i++)
+	{
+		if (field[i].empty())
+		{
+			std::cout <<  "Contact Not Added: Field '" << prompt[i].substr(0, prompt[i].length() - 2) << "' is empty" << std::endl;
+			return (0);
+		}
+	}
 	for (size_t i = 0; i < field[3].length(); i++)
 	{
-		if (field[3].at(i) < 48 || field[3].at(i) > 57)
+		if (!std::isdigit(field[3].at(i)))
+		{
+			std::cout << "Contact Not Added: Number field must be filled with numbers only!" << std::endl;
 			return (0);
+		}
 	}
 	if (index > 7)
 	{

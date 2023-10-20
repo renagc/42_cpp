@@ -1,4 +1,15 @@
-//#include <string>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 14:03:15 by rgomes-c          #+#    #+#             */
+/*   Updated: 2023/10/20 14:24:56 by rgomes-c         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 
 int main(int ac, char **av)
@@ -10,9 +21,7 @@ int main(int ac, char **av)
 		for (int i = 1; av[i]; i++)
 		{
 			for (int j = 0; av[i][j]; j++)
-				if (av[i][j] <= 'z' && av[i][j] >= 'a')
-					av[i][j] -= 32;
-			std::cout << av[i];
+				std::cout << (char)std::toupper(av[i][j]);
 		}
 		std::cout << std::endl;
 	}
