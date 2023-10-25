@@ -2,9 +2,11 @@ NAME = zombie
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g
+CXXFLAGS = -Wall -Wextra -Werror -I$(INC) -std=c++98 #-fsanitize=address -g
 
-SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+INC = inc/
+
+SRC = src/Zombie.cpp src/newZombie.cpp src/randomChump.cpp src/main.cpp 
 
 OBJ =  $(SRC:.cpp=.o)
 
