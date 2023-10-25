@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:09:00 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/20 17:28:17 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:46:41 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	PhoneBook::searchContact(int index)
 		std::cout << "no contacts on this list" << std::endl;
 		return ;
 	}
-	std::cout << std::right << std::setw(10) << "Index" << " | " << std::setw(10) << "First Name" << " | " << std::setw(10) << "Last Name" << " | " << std::setw(10) << "Nickname" << std::endl;
+	std::cout << std::right << std::setw(10) << "Index" << " | " << std::setw(10) << "First Name" << " | " << std::setw(10) << "Last Name" << " | " << std::setw(10) << "Nickname" << std::setw(10) << std::endl;
 	for (int i = 0; i < index; i++)
 	{
 		std::cout << std::right << std::setw(10) << i << " | ";
@@ -46,7 +46,7 @@ void	PhoneBook::searchContact(int index)
 			std::cout << std::endl;
 			return ;
 		}
-		if (prompt.length() == 1 && std::atoi(prompt.c_str()) < index)
+		if (prompt.length() == 1 && std::isdigit(prompt.at(0)) && std::atoi(prompt.c_str()) < index)
 		{
 			this->_contacts[std::atoi(prompt.c_str())].showPrivate();
 			return ;
