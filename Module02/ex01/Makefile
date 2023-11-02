@@ -2,9 +2,11 @@ NAME = fixed
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g
+CXXFLAGS = -Wall -Wextra -Werror -I$(INC) -std=c++98 #-fsanitize=address -g
 
-SRC = main.cpp Fixed.cpp
+INC = inc/
+
+SRC = main.cpp Fixed.cpp 
 
 OBJ =  $(SRC:.cpp=.o)
 

@@ -23,6 +23,13 @@ Fixed::Fixed(const Fixed& other)
 	this->operator=(other);
 };
 
+Fixed &Fixed::operator=(const Fixed &other)
+{
+	std::cout << "Copy assigment operator called" << std::endl;
+	this->setRawBits(other.getRawBits());
+	return (*this);
+}
+
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
@@ -37,11 +44,4 @@ int Fixed::getRawBits( void ) const
 void Fixed::setRawBits( int const raw )
 {
 	this->_value = raw;
-}
-
-Fixed &Fixed::operator=(const Fixed &other)
-{
-	std::cout << "Copy assigment operator called" << std::endl;
-	this->setRawBits(other.getRawBits());
-	return (*this);
 }
