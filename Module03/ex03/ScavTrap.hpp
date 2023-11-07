@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:33:09 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/19 15:26:27 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:05:30 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@
 # include <iostream>
 # include "ClapTrap.hpp"
 
-class ScavTrap : virtual public ClapTrap
+class ScavTrap : public ClapTrap
 {
 	public:
-		ScavTrap();
 		ScavTrap( const std::string & name );
-		ScavTrap( ScavTrap const &);
+		ScavTrap( const ScavTrap &other );
 		~ScavTrap();
 
-		ScavTrap &operator=(ScavTrap const & other);
+		ScavTrap &operator=(const ScavTrap &other);
+
 		void	guardGate( void );
+		void	attack(const std::string& target);
 };
 
 #endif
