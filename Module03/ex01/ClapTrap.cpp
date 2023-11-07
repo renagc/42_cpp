@@ -1,25 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:21:03 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/18 15:53:23 by rgomes-c         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitpoints(10), _energypoints(10), _attackdmg(0)
 {
-	std::cout << "Constructor Called" << std::endl;
+	std::cout << "ClapTrap: Default Constructor Called" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &other)
+{
+	*this = other;
+	std::cout << "ClapTrap: Copy Constructor Called" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor Called" << std::endl;
+	std::cout << "ClapTrap: Destructor Called" << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+{
+	this->_name = other.getName();
+	this->_attackdmg = other.getAttackDamage();
+	this->_energypoints = other.getHitPoints();
+	this->_hitpoints = other.getHitPoints();
+	std::cout << "ClapTrap: Operator Called" << std::endl;
+	return (*this);
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -56,37 +60,48 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << this->_name << " can't be repaired!" << std::endl;
 }
 
+//Accessors - Get
+const std::string &ClapTrap::getName( void ) const
+{
+	return (this->_name);
+}
+
+int ClapTrap::getHitPoints( void ) const
+{
+	return (this->_hitpoints);
+}
+
+
+int ClapTrap::getEnergyPoints( void ) const
+{
+	return (this->_energypoints);
+}
+
+
+int ClapTrap::getAttackDamage( void ) const
+{
+	return (this->_attackdmg);
+}
+
+//Accessors - Set
+void ClapTrap::setName( const std::string &name )
+{
+	this->_name = name;
+}
+
 void ClapTrap::setHitPoints( int value )
 {
 	this->_hitpoints = value;
 }
+
 
 void ClapTrap::setEnergyPoints( int value )
 {
 	this->_energypoints = value;
 }
 
+
 void ClapTrap::setAttackDamage( int value )
 {
 	this->_attackdmg = value;
-}
-
-std::string &ClapTrap::getName( void )
-{
-	return (this->_name);
-}
-
-int ClapTrap::getHitPoints( void )
-{
-	return (this->_hitpoints);
-}
-
-int ClapTrap::getEnergyPoints( void )
-{
-	return (this->_energypoints);
-}
-
-int ClapTrap::getAttackDamage( void )
-{
-	return (this->_attackdmg);
 }

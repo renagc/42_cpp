@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:21:12 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/18 15:52:33 by rgomes-c         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CLAPTRAP_H
 # define CLAPTRAP_H
 
@@ -22,23 +10,27 @@ class ClapTrap
 		int				_hitpoints;
 		int				_energypoints;
 		int				_attackdmg;
-	
+
 	public:
 		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap &other);
 		~ClapTrap();
+
+		ClapTrap &operator=(const ClapTrap &other);
 
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 		
+		const std::string &getName( void ) const;
+		int	getHitPoints( void ) const;
+		int getEnergyPoints( void ) const;
+		int getAttackDamage( void ) const;
+
+		void setName( const std::string &name );
 		void setHitPoints( int value );
 		void setEnergyPoints( int value );
 		void setAttackDamage( int value );
-		
-		std::string &getName( void );
-		int getHitPoints( void );
-		int getEnergyPoints( void );
-		int getAttackDamage( void );
 };
 
 #endif

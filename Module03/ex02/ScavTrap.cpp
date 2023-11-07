@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:44:58 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/18 15:56:31 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:11:06 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,25 @@ ScavTrap::ScavTrap( const std::string & name ) : ClapTrap(name)
 	std::cout << "ScavTrap " << name << " has been created!" << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(this->getName())
+{
+	*this = other;
+	std::cout << "ScavTrap: Copy Constructor Called" << std::endl;
+}
+
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << this->getName() << " has been destroyed!" << std::endl;
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &other)
+{
+	this->setName(other.getName());
+	this->setAttackDamage(other.getAttackDamage());
+	this->setEnergyPoints(other.getEnergyPoints());
+	this->setHitPoints(other.getHitPoints());
+	std::cout << "ScavTrap: Operator Called" << std::endl;
+	return (*this);
 }
 
 void	ScavTrap::guardGate( void )

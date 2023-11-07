@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:44:58 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/18 16:19:47 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:10:31 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,25 @@ FragTrap::FragTrap( const std::string & name ) : ClapTrap(name)
 	std::cout << "FragTrap " << name << " has been created!" << std::endl;
 }
 
+FragTrap::FragTrap(const FragTrap &other) : ClapTrap(this->getName())
+{
+	*this = other;
+	std::cout << "FragTrap: Copy Constructor Called" << std::endl;
+}
+
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap " << this->getName() << " has been destroyed!" << std::endl;
+}
+
+FragTrap &FragTrap::operator=(const FragTrap &other)
+{
+	this->setName(other.getName());
+	this->setAttackDamage(other.getAttackDamage());
+	this->setEnergyPoints(other.getEnergyPoints());
+	this->setHitPoints(other.getHitPoints());
+	std::cout << "FragTrap: Operator Called" << std::endl;
+	return (*this);
 }
 
 void FragTrap::highFivesGuys()

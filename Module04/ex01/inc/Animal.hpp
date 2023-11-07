@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 15:33:09 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/11/06 17:08:48 by rgomes-c         ###   ########.fr       */
+/*   Created: 2023/10/24 15:20:46 by rgomes-c          #+#    #+#             */
+/*   Updated: 2023/10/31 16:31:48 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_H
-# define FRAGTRAP_H
+#ifndef ANIMAL_H
+# define ANIMAL_H
 
 # include <iostream>
-# include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class Animal
 {
+	protected:
+		std::string type;
 	public:
-		FragTrap( const std::string & name );
-		FragTrap(const FragTrap &other);
-		~FragTrap();
+		Animal();
+		Animal(const Animal &other);
+		virtual ~Animal();
 
-		FragTrap &operator=(const FragTrap &other);
+		Animal &operator=(const Animal &other);
 
-		void 	highFivesGuys(void);
-		void	attack(const std::string& target);
+		//subtype polymorphism
+		virtual void makeSound( void ) const;
+		const std::string &getType( void ) const;
 };
 
 #endif

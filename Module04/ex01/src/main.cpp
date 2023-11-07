@@ -5,20 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 15:14:53 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/11/06 15:17:05 by rgomes-c         ###   ########.fr       */
+/*   Created: 2023/10/24 15:21:05 by rgomes-c          #+#    #+#             */
+/*   Updated: 2023/10/24 19:54:44 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int main(void)
 {
-	ClapTrap clap("ClapTrack");
-
-	clap.attack("Enemy");
-	clap.takeDamage(5);
-	clap.beRepaired(2);
-	clap.attack("Enemy2");
-	return (0);
+	const Animal *animals[10];
+    for (int i = 0; i < 10; ++i)
+    {
+        if (i % 2)
+            animals[i] = new Dog();
+        else
+            animals[i] = new Cat();
+    }
+    for (int i = 0; i < 10; ++i) {
+        delete animals[i];
+    }
+    const Cat *cat1 = new Cat();
+    const Animal *cat2 = new Cat(*cat1);
+    delete cat1;
+    delete cat2;
 }

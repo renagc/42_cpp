@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 15:33:09 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/11/06 17:08:48 by rgomes-c         ###   ########.fr       */
+/*   Created: 2023/10/24 19:45:38 by rgomes-c          #+#    #+#             */
+/*   Updated: 2023/10/24 19:46:03 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_H
-# define FRAGTRAP_H
+#ifndef WRONGCAT_H
+# define WRONGCAT_H
 
+# include "WrongAnimal.hpp"
 # include <iostream>
-# include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class WrongCat : public WrongAnimal
 {
+	private:
+		/*private atributes*/
+	protected:
+		/*protected atributes*/
 	public:
-		FragTrap( const std::string & name );
-		FragTrap(const FragTrap &other);
-		~FragTrap();
+		WrongCat();
+		WrongCat(const WrongCat &other);
+		~WrongCat();
 
-		FragTrap &operator=(const FragTrap &other);
-
-		void 	highFivesGuys(void);
-		void	attack(const std::string& target);
+		WrongCat &operator=(const WrongCat &other);
+		void makeSound( void ) const;
 };
 
 #endif
