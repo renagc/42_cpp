@@ -16,29 +16,29 @@
 
 int main(void)
 {
-	FragTrap	Blert("Blert");
-	FragTrap	Forty("Fortytuos");
-	ScavTrap	Dynamo("Dynamo");
+	FragTrap	fa("FragTrap1");
+	FragTrap	fb("FragTrap2");
+	ScavTrap	sa("ScavTrap1");
 
-	Blert.attack(Forty.getName());
-	Forty.takeDamage(Blert.getAttackDamage());
-	Blert.attack(Forty.getName());
-	Forty.takeDamage(Blert.getAttackDamage());
-	Forty.highFivesGuys();
-	Forty.beRepaired(15);
-	Blert.attack(Forty.getName());
-	Forty.takeDamage(Blert.getAttackDamage());
-	Forty.attack(Dynamo.getName());
-	Dynamo.takeDamage(Forty.getAttackDamage());
-	Forty.attack(Dynamo.getName());
-	Dynamo.takeDamage(Forty.getAttackDamage());
-	Forty.attack(Dynamo.getName());
-	Dynamo.takeDamage(Forty.getAttackDamage());
-	Dynamo.attack(Blert.getName());
-	Blert.takeDamage(Dynamo.getAttackDamage());
-	Forty.attack(Dynamo.getName());
-	Dynamo.takeDamage(Forty.getAttackDamage());
-	Forty.attack(Dynamo.getName());
-	Dynamo.takeDamage(Forty.getAttackDamage());
+	fa.attack(fb.getName());
+	fb.takeDamage(fa.getAttackDamage());
+	fa.attack(fb.getName());
+	fb.takeDamage(fa.getAttackDamage());
+	fb.highFivesGuys();
+	fb.beRepaired(15);
+	fa.attack(fb.getName());
+	fb.takeDamage(fa.getAttackDamage());
+	fb.attack(sa.getName());
+	sa.takeDamage(fb.getAttackDamage());
+	fb.attack(sa.getName());
+	sa.takeDamage(fb.getAttackDamage());
+	fb.attack(sa.getName());
+	sa.takeDamage(fb.getAttackDamage());
+	sa.attack(fa.getName());
+	fa.takeDamage(sa.getAttackDamage());
+	fb.attack(sa.getName());
+	sa.takeDamage(fb.getAttackDamage());
+	fb.attack(sa.getName());
+	sa.takeDamage(fb.getAttackDamage());
 	return (0);
 }

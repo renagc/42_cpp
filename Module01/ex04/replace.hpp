@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   replace.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 15:33:09 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/11/06 17:08:48 by rgomes-c         ###   ########.fr       */
+/*   Created: 2023/10/27 15:40:17 by rgomes-c          #+#    #+#             */
+/*   Updated: 2023/10/27 15:42:46 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_H
-# define FRAGTRAP_H
+#ifndef REPLACE_HPP
+# define REPLACE_HPP
 
-# include <iostream>
-# include "ClapTrap.hpp"
+#include <iostream>
+#include <fstream>
+#include <string>
 
-class FragTrap : virtual public ClapTrap
-{
-	public:
-		FragTrap( void );
-		FragTrap( std::string name );
-		FragTrap(const FragTrap &other);
-		~FragTrap();
-
-		FragTrap &operator=(const FragTrap &other);
-
-		void 	highFivesGuys(void);
-		void	attack(const std::string& target);
-};
+void replaceContent(std::ifstream& infile, std::ofstream& outfile, std::string& s1, std::string& s2);
 
 #endif

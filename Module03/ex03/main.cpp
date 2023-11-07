@@ -17,39 +17,36 @@
 
 int main(void)
 {
-	std::string	One = "One";
-	std::string	Two = "Two";
-	
-	DiamondTrap	D1(One);
-	DiamondTrap	D2(Two);
+	DiamondTrap	d1("dt1");
+	DiamondTrap	d2("dt2");
 
-    D1.whoAmI();
-    D2.whoAmI();
+    d1.whoAmI();
+    d2.whoAmI();
 	
-    std::cout << "I am " << D1.getName() << " and my hit points as a DiamondTrap are " << D1.getHitPoints() << std::endl;
-    std::cout << "I am " << D1.getName() << " and my energy points as a DiamondTrap are " << D1.getEnergyPoints() << std::endl;
-    std::cout << "I am " << D1.getName() << " and my damage points as a DiamondTrap are " << D1.getDamage() << std::endl << std::endl;
+    std::cout << "I am " << d1.getName() << " and my hit points as a DiamondTrap are " << d1.getHitPoints() << std::endl;
+    std::cout << "I am " << d1.getName() << " and my energy points as a DiamondTrap are " << d1.getEnergyPoints() << std::endl;
+    std::cout << "I am " << d1.getName() << " and my damage points as a DiamondTrap are " << d1.getAttackDamage() << std::endl << std::endl;
 	
 	std::cout << "Now for the interesting part:" << std::endl;
-    D1.attack(Two);
-	D2.takeDamage(D1.getDamage());
-	D2.attack(One);
-	D1.takeDamage(D2.getDamage());
-	D2.beRepaired(15);
-	D1.attack(Two);
-	D2.takeDamage(D1.getDamage());
+    d1.attack(d2.getName());
+	d2.takeDamage(d1.getAttackDamage());
+	d2.attack(d1.getName());
+	d1.takeDamage(d2.getAttackDamage());
+	d2.beRepaired(15);
+	d1.attack(d2.getName());
+	d2.takeDamage(d1.getAttackDamage());
 
 	std::cout << std::endl;
 
-	D1.guardGate();
-	D1.highFivesGuys();
+	d1.guardGate();
+	d1.highFivesGuys();
 	
 	std::cout << std::endl;
 	
-	D1.attack(Two);
-	D2.takeDamage(D1.getDamage());
-	D1.attack(Two);
-	D2.takeDamage(D1.getDamage());
-	D2.beRepaired(15);
+	d1.attack(d2.getName());
+	d2.takeDamage(d1.getAttackDamage());
+	d1.attack(d2.getName());
+	d2.takeDamage(d1.getAttackDamage());
+	d2.beRepaired(15);
 	return (0);
 }

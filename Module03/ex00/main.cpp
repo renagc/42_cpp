@@ -14,11 +14,17 @@
 
 int main(void)
 {
-	ClapTrap clap("ClapTrack");
-
-	clap.attack("Enemy");
-	clap.takeDamage(5);
-	clap.beRepaired(2);
-	clap.attack("Enemy2");
+	ClapTrap	ca;
+	ClapTrap	cb("c1");
+	ClapTrap	cc("c2");
+	
+	ca = cc;
+	cb.attack(ca.getName());
+	ca.takeDamage(5);
+	ca.beRepaired(2);
+	cb.attack(ca.getName());
+	ca.takeDamage(25);
+	ca.attack(cb.getName());
+	ca.beRepaired(3);
 	return (0);
 }

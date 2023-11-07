@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teste.cpp                                          :+:      :+:    :+:   */
+/*   replaceContent.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:39:17 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/12 18:39:35 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:42:30 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <fstream>
+#include "replace.hpp"
 
 void replaceContent(std::ifstream& infile, std::ofstream& outfile, std::string& s1, std::string& s2)
 {

@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:55:52 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/12 16:39:01 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:05:40 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 HumanB::HumanB( std::string name ) : _name(name)
 {
+	this->_weapon = NULL;
 	std::cout << "HumanB Constructor Called" << std::endl;
 }
 

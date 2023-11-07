@@ -2,9 +2,11 @@ NAME = hordeofZombies
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g
+CXXFLAGS = -Wall -Wextra -Werror -I$(INC) -std=c++98 #-fsanitize=address -g
 
-SRC = main.cpp zombieHorde.cpp Zombie.cpp
+INC = inc/
+
+SRC = src/main.cpp src/Zombie.cpp src/zombieHorde.cpp 
 
 OBJ =  $(SRC:.cpp=.o)
 

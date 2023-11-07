@@ -2,9 +2,11 @@ NAME = battle
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g
+CXXFLAGS = -Wall -Wextra -Werror -I$(INC) -std=c++98 #-fsanitize=address -g
 
-SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+INC = inc/
+
+SRC = src/HumanB.cpp src/main.cpp src/HumanA.cpp src/Weapon.cpp 
 
 OBJ =  $(SRC:.cpp=.o)
 

@@ -13,15 +13,24 @@
 #include "FragTrap.hpp"
 #include "ClapTrap.hpp"
 
-FragTrap::FragTrap( const std::string & name ) : ClapTrap(name)
+FragTrap::FragTrap( void )
 {
+	this->setHitPoints(100);
+	this->setEnergyPoints(100);
+	this->setAttackDamage(30);
+	std::cout << "FragTrap: Default Constructor Called" << std::endl;
+}
+
+FragTrap::FragTrap( std::string name )
+{
+	this->setName(name);
 	this->setHitPoints(100);
 	this->setEnergyPoints(100);
 	this->setAttackDamage(30);
 	std::cout << "FragTrap " << name << " has been created!" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &other) : ClapTrap(this->getName())
+FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 {
 	*this = other;
 	std::cout << "FragTrap: Copy Constructor Called" << std::endl;

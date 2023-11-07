@@ -12,6 +12,7 @@ class ClapTrap
 		int				_attackdmg;
 
 	public:
+		ClapTrap( void );
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &other);
 		~ClapTrap();
@@ -26,6 +27,11 @@ class ClapTrap
 		int	getHitPoints( void ) const;
 		int getEnergyPoints( void ) const;
 		int getAttackDamage( void ) const;
+
+		void setName( const std::string &name );
+		void setHitPoints( int value );
+		void setEnergyPoints( int value );
+		void setAttackDamage( int value );
 };
 
 #endif

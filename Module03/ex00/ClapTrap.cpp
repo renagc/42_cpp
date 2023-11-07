@@ -1,11 +1,16 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitpoints(10), _energypoints(10), _attackdmg(0)
+ClapTrap::ClapTrap( void ) : _hitpoints(10), _energypoints(10), _attackdmg(0)
 {
 	std::cout << "ClapTrap: Default Constructor Called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &other)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitpoints(10), _energypoints(10), _attackdmg(0)
+{
+	std::cout << "ClapTrap: Constructor Called" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &other) : _hitpoints(10), _energypoints(10), _attackdmg(0)
 {
 	*this = other;
 	std::cout << "ClapTrap: Copy Constructor Called" << std::endl;
@@ -20,7 +25,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
 	this->_name = other.getName();
 	this->_attackdmg = other.getAttackDamage();
-	this->_energypoints = other.getHitPoints();
+	this->_energypoints = other.getEnergyPoints();
 	this->_hitpoints = other.getHitPoints();
 	std::cout << "ClapTrap: Operator Called" << std::endl;
 	return (*this);
@@ -60,7 +65,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << this->_name << " can't be repaired!" << std::endl;
 }
 
-//Accessors
+//Accessors - Get
 const std::string &ClapTrap::getName( void ) const
 {
 	return (this->_name);
@@ -81,4 +86,27 @@ int ClapTrap::getEnergyPoints( void ) const
 int ClapTrap::getAttackDamage( void ) const
 {
 	return (this->_attackdmg);
+}
+
+//Accessors - Set
+void ClapTrap::setName( const std::string &name )
+{
+	this->_name = name;
+}
+
+void ClapTrap::setHitPoints( int value )
+{
+	this->_hitpoints = value;
+}
+
+
+void ClapTrap::setEnergyPoints( int value )
+{
+	this->_energypoints = value;
+}
+
+
+void ClapTrap::setAttackDamage( int value )
+{
+	this->_attackdmg = value;
 }

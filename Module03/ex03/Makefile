@@ -1,8 +1,8 @@
-NAME = fragtrap
+NAME = diamondtrap
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow #-fsanitize=address -g
 
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 

@@ -15,11 +15,17 @@
 
 int main(void)
 {
-	ScavTrap scav("name");
-
-	scav.attack("Enemy");
-	scav.takeDamage(5);
-	scav.beRepaired(2);
-	scav.guardGate();
+	ScavTrap	sa;
+	ScavTrap	sb("ScavTrap1");
+	ScavTrap	sc("ScavTrap2");
+	
+	sa = sc;
+	sb.attack(sa.getName());
+	sa.takeDamage(50);
+	sa.beRepaired(20);
+	sb.attack(sa.getName());
+	sa.takeDamage(250);
+	sa.attack(sb.getName());
+	sa.beRepaired(1);
 	return (0);
 }
