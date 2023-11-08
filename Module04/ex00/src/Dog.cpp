@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:20:58 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/24 19:23:39 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:11:37 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Dog::Dog()
 
 Dog::Dog(const Dog &other)
 {
-	this->type = other.type;
+	*this = other;
 	std::cout << "Dog: Constructor Called" << std::endl;
 }
 
@@ -31,7 +31,7 @@ Dog::~Dog()
 
 Dog &Dog::operator=(const Dog &other)
 {
-	this->type = other.type;
+	this->type = other.getType();
 	std::cout << "Dog: Operator Called" << std::endl;
 	return (*this);
 }

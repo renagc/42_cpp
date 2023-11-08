@@ -1,4 +1,4 @@
-NAME = brain
+NAME = materia
 
 CXX = c++
 
@@ -6,7 +6,7 @@ CXXFLAGS = -Wall -Wextra -Werror -I$(INC) -std=c++98 #-fsanitize=address -g
 
 INC = inc/
 
-SRC =	src/Animal.cpp	src/Cat.cpp	src/WrongCat.cpp	src/WrongAnimal.cpp	src/Brain.cpp	src/Dog.cpp src/main.cpp
+SRC =	src/AMateria.cpp	src/Character.cpp	src/MateriaSource.cpp	src/Cure.cpp	src/Ice.cpp	src/main.cpp
 
 OBJ =  $(SRC:.cpp=.o)
 

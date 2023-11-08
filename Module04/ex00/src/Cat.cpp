@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:20:56 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/24 19:23:25 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:12:26 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Cat::Cat()
 
 Cat::Cat(const Cat &other)
 {
-	this->type = other.type;
+	*this = other;
 	std::cout << "Cat: Constructor Called" << std::endl;
 }
 
@@ -31,7 +31,7 @@ Cat::~Cat()
 
 Cat &Cat::operator=(const Cat &other)
 {
-	this->type = other.type;
+	this->type = other.getType();
 	std::cout << "Cat: Operator Called" << std::endl;
 	return (*this);
 }

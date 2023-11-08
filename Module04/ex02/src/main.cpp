@@ -6,45 +6,46 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:21:05 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/11/08 10:35:58 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:57:20 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Animal.hpp"
+#include "../inc/AAnimal.hpp"
 #include "../inc/Dog.hpp"
 #include "../inc/Cat.hpp"
 #include "../inc/WrongAnimal.hpp"
 #include "../inc/WrongCat.hpp"
 
 int main(void)
-{
+{	
 	{
-		const Animal *animals[10];
+		const AAnimal *AAnimals[10];
 		for (int i = 0; i < 10; ++i)
 		{
 			if (i % 2)
-				animals[i] = new Dog();
+				AAnimals[i] = new Dog();
 			else
-				animals[i] = new Cat();
+				AAnimals[i] = new Cat();
 		}
 		for (int i = 0; i < 10; ++i) {
-			delete animals[i];
+			delete AAnimals[i];
 		}
 		const Cat *cat1 = new Cat();
-		const Animal *cat2 = new Cat(*cat1);
+		const AAnimal *cat2 = new Cat(*cat1);
 		delete cat1;
 		delete cat2;
 	}
 	{
-		const Animal *animalA = new Dog();
-		const Animal *animalB = new Cat();
-		const Animal *animalC;
-		const Animal *animalD;
+		const AAnimal *AAnimalA = new Dog();
+		const AAnimal *AAnimalB = new Cat();
+		const AAnimal *AAnimalC;
+		const AAnimal *AAnimalD;
 		const Cat *catA = new Cat();
 		const Cat *catB;
 
-		animalC = animalA;
-		animalD = animalB;
+		// AAnimalC = new Animal();
+		AAnimalC = AAnimalA;
+		AAnimalD = AAnimalB;
 
 		std::cout << "Brain Adress of CatA: " << &catA->getBrain() << std::endl;
 		std::string ideas[100];
@@ -76,11 +77,11 @@ int main(void)
 		std::cout << "Brain Adress of CatB: " << &catB->getBrain() << std::endl;
 		for(int i = 0; i < 100; i++)
 			std::cout << catB->getBrain().getIdeas()[i] << std::endl;
-		animalC->makeSound();
-		animalD->makeSound();
+		AAnimalC->makeSound();
+		AAnimalD->makeSound();
 
 		delete catA;
-		delete animalA;
-		delete animalB;
+		delete AAnimalA;
+		delete AAnimalB;
 	}
 }

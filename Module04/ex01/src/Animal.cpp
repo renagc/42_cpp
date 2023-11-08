@@ -6,11 +6,11 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:20:54 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/24 19:52:25 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:56:11 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "../inc/Animal.hpp"
 
 Animal::Animal() : type("(animal type)")
 {
@@ -19,7 +19,7 @@ Animal::Animal() : type("(animal type)")
 
 Animal::Animal(const Animal &other)
 {
-	this->type = other.type;
+	*this = other;
 	std::cout << "Animal: Constructor Called" << std::endl;
 }
 
@@ -30,7 +30,7 @@ Animal::~Animal()
 
 Animal &Animal::operator=(const Animal &other)
 {
-	this->type = other.type;
+	this->type = other.getType();
 	std::cout << "Animal: Operator Called" << std::endl;
 	return (*this);
 }

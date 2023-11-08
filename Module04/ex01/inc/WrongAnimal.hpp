@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:45:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/24 19:46:58 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:14:27 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 class WrongAnimal
 {
-	private:
-		/*private atributes*/
 	protected:
 		std::string type;
 	public:

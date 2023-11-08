@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:45:41 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/24 19:53:18 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:14:31 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ WrongAnimal::WrongAnimal() : type("(undefined wrong animal)")
 
 WrongAnimal::WrongAnimal(const WrongAnimal &other)
 {
-	(void)other; /*please change this*/
+	*this = other;
 	std::cout << "WrongAnimal: Constructor Called" << std::endl;
 }
 
@@ -30,7 +30,7 @@ WrongAnimal::~WrongAnimal()
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
 {
-	(void)other; /*change this to be like this->setPrivate(other->getPrivate())*/
+	this->type = other.getType();
 	std::cout << "WrongAnimal: Operator Called" << std::endl;
 	return (*this);
 }

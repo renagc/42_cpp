@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 15:20:51 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/11/07 16:17:07 by rgomes-c         ###   ########.fr       */
+/*   Created: 2023/10/24 15:20:46 by rgomes-c          #+#    #+#             */
+/*   Updated: 2023/11/07 15:17:02 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_H
-# define DOG_H
+#ifndef AAnimal_H
+# define AAnimal_H
 
-# include "Animal.hpp"
-# include "Brain.hpp"
 # include <iostream>
 
-class Dog : public Animal
+class AAnimal
 {
-	private:
-		Brain * _brain;
+	protected:
+		std::string type;
 	public:
-		Dog();
-		Dog(const Dog &other);
-		~Dog();
+		AAnimal();
+		AAnimal(const AAnimal &other);
+		virtual ~AAnimal();
 
-		Dog &operator=(const Dog &other);
-		void makeSound( void ) const;
+		AAnimal &operator=(const AAnimal &other);
+
+		//subtype polymorphism
+		virtual void makeSound( void ) const = 0;
+		const std::string &getType( void ) const;
 };
 
 #endif

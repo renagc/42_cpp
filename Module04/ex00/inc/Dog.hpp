@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:20:51 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/10/24 17:50:37 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:09:59 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,13 @@
 
 class Dog : public Animal
 {
-	private:
-		/*private atributes*/
-	protected:
-		/*protected atributes*/
 	public:
 		Dog();
 		Dog(const Dog &other);
 		~Dog();
 
 		Dog &operator=(const Dog &other);
-		virtual void makeSound( void ) const;
+		void makeSound( void ) const;
 };
 
 #endif
