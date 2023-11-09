@@ -3,12 +3,14 @@
 
 # include <iostream>
 # include "AMateria.hpp"
+# include "LinkedList.hpp"
 
 class Character : public ICharacter
 {
 	private:
 		std::string _name;
-		AMateria	*m[4];
+		AMateria	*_m[4];
+		LinkedList	*list;
 	public:
 		Character();
 		Character(std::string name);

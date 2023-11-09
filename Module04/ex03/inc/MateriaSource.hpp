@@ -10,9 +10,7 @@
 class MateriaSource : public IMateriaSource
 {
 	private:
-		/*private atributes*/
-	protected:
-		/*protected atributes*/
+		AMateria	*m[4];
 	public:
 		MateriaSource();
 		MateriaSource(const MateriaSource &other);
