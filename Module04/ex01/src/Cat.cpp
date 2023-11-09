@@ -33,6 +33,7 @@ Cat::~Cat()
 
 Cat &Cat::operator=(const Cat &other)
 {
+	this->_brain = new Brain(*other._brain);
 	this->type = other.getType();
 	std::cout << "Cat: Operator Called" << std::endl;
 	return (*this);

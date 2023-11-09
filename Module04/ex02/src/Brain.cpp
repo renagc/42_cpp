@@ -31,12 +31,16 @@ Brain::~Brain()
 Brain &Brain::operator=(const Brain &other)
 {
     for (int i = 0; i < 100; i++)
-        this->_ideas[i] = other._ideas[i];
+	{
+		this->_ideas[i] = other._ideas[i];
+	}
 	return (*this);
 }
 
-void Brain::setIdeas( std::string ideas[100] )
+void Brain::setIdeas( std::string *ideas )
 {
+	if (ideas == NULL)
+		return ;
 	for (int i = 0; i < 100; i++)
 		this->_ideas[i] = ideas[i];
 }
