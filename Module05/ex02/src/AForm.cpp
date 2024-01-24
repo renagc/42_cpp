@@ -7,12 +7,12 @@ AForm::AForm() : _name("default"), _signed(false), _gradeToSign(150), _gradeToEx
 
 AForm::AForm(const std::string name, const int gradeToSign, const int gradeToExecute) : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
-	std::cout << "AForm: Constructor Called" << std::endl;
 	this->validateGrade(this->_gradeToSign);
 	this->validateGrade(this->_gradeToExecute);
+	std::cout << "AForm: Constructor Called" << std::endl;
 }
 
-AForm::AForm(const AForm &other) : _name("copy"), _signed(false), _gradeToSign(150), _gradeToExecute(150)
+AForm::AForm(const AForm &other) : _name(other.getName()), _signed(other.getSigned()), _gradeToSign(other.getGradeToSign()), _gradeToExecute(other.getGradeToExecute())
 {
 	*this = other;
 	std::cout << "AForm: Copy Constructor Called" << std::endl;

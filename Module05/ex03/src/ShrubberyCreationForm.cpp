@@ -2,6 +2,7 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include <fstream>
+#include <ostream>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("Default")
 {
@@ -40,11 +41,10 @@ const std::string &ShrubberyCreationForm::getTarget() const
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
 	AForm::validateGrade(executor.getGrade());
-    if (!this->getSigned())
-        throw AForm::GradeNotSignedException();
-	std::ofstream outfile(this->_target + "_shrubbery", std::ofstream::trunc);
-	if (!outfile.is_open())
-		throw std::runtime_error("Cannot open file");
+    (!this->getSigned() ? throw AForm::GradeNotSignedException() : this->getSigned());
+	std::ofstream outfile;
+	outfile.open((this->_target + "_Shrubbery").c_str(), std::ofstream::trunc);
+	(!outfile.is_open() ? throw std::runtime_error("Cannot open file") : outfile.is_open());
 	outfile << "   ^   \n";
     outfile << "  ^^^  \n";
     outfile << " ^^^^^ \n";

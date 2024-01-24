@@ -12,7 +12,7 @@ int main()
         bureaucrat1.signForm(form);
         std::cout << form << std::endl;
 		// bureaucrat2.signForm(form);
-        Form invalidForm("Invalid Form", 160, 170);
+        Form invalidForm("Invalid Form", 140, 150);
     }
     catch (const std::exception& e)
 	{

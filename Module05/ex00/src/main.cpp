@@ -1,19 +1,70 @@
 #include "Bureaucrat.hpp"
 
+void increment(Bureaucrat &bureaucrat)
+{
+    try
+    {
+        std::cout << "before incerement:" << std::endl;
+        std::cout << "  " << bureaucrat << std::endl;
+        bureaucrat.incrementGrade();
+        std::cout << "after increment:"<< std::endl;
+        std::cout << "  " << bureaucrat << std::endl;
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Exception: " << e.what() << std::endl;
+    }
+}
+
+void decrement(Bureaucrat &bureaucrat)
+{
+    try
+    {
+        std::cout << "before decerement:" << std::endl;
+        std::cout << "  " << bureaucrat << std::endl;
+        bureaucrat.decrementGrade();
+        std::cout << "after decrement:"<< std::endl;
+        std::cout << "  " << bureaucrat << std::endl;
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Exception: " << e.what() << std::endl;
+    }
+}
+
 int main()
 {
-	try {
-        Bureaucrat bureaucrat1("John Doe", 50);
-        std::cout << bureaucrat1 << std::endl;
-		bureaucrat1.incrementGrade();
-		Bureaucrat bureaucrat2("John Doe", 1);
-		bureaucrat2.incrementGrade();
-        std::cout << bureaucrat2 << std::endl;
-		Bureaucrat bureaucrat3("John Doe", 150);
-		bureaucrat3.decrementGrade();
-        std::cout << bureaucrat3 << std::endl;
+    {
+        Bureaucrat bureaucrat("A", 50);
+        increment(bureaucrat);
+        decrement(bureaucrat);
     }
-    catch (const std::exception& e) {
+    {
+        Bureaucrat bureaucrat("B", 1);
+        increment(bureaucrat);
+        decrement(bureaucrat);
+    }
+    {
+        Bureaucrat bureaucrat("C", 150);
+        decrement(bureaucrat);
+        increment(bureaucrat);
+    }
+    try
+    {
+        Bureaucrat bureaucrat("D", 0);
+        bureaucrat.incrementGrade();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Exception: " << e.what() << std::endl;
+    }
+    try
+    {
+        Bureaucrat bureaucrat("D", 151);
+        bureaucrat.decrementGrade();
+    }
+    catch (const std::exception& e)
+    {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 	return (0);

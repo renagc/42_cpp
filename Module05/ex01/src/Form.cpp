@@ -7,12 +7,12 @@ Form::Form() : _name("default"), _signed(false), _gradeToSign(150), _gradeToExec
 
 Form::Form(const std::string name, const int gradeToSign, const int gradeToExecute) : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
-	std::cout << "Form: Constructor Called" << std::endl;
 	this->_validateGrade(this->_gradeToSign);
 	this->_validateGrade(this->_gradeToExecute);
+	std::cout << "Form: Constructor Called" << std::endl;
 }
 
-Form::Form(const Form &other) : _name("copy"), _signed(false), _gradeToSign(150), _gradeToExecute(150)
+Form::Form(const Form &other) : _name(other.getName()), _signed(other.getSigned()), _gradeToSign(other.getGradeToSign()), _gradeToExecute(other.getGradeToExecute())
 {
 	*this = other;
 	std::cout << "Form: Copy Constructor Called" << std::endl;

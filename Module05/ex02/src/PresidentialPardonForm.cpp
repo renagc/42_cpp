@@ -3,7 +3,7 @@
 #include "AForm.hpp"
 #include <fstream>
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), _target("Default")
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), _target("default")
 {
 	std::cout << "PresidentialPardonForm: Default Constructor Called" << std::endl;
 }
@@ -40,8 +40,7 @@ const std::string &PresidentialPardonForm::getTarget() const
 void PresidentialPardonForm::execute(const Bureaucrat& executor) const
 {
 	AForm::validateGrade(executor.getGrade());
-    if (!this->getSigned())
-        throw AForm::GradeNotSignedException();
+    (!this->getSigned() ? throw AForm::GradeNotSignedException() : this->getSigned());
 	std::cout << this->_target << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
 

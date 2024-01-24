@@ -40,8 +40,7 @@ const std::string &RobotomyRequestForm::getTarget() const
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
 	AForm::validateGrade(executor.getGrade());
-    if (!this->getSigned())
-        throw AForm::GradeNotSignedException();
+    (!this->getSigned() ? throw AForm::GradeNotSignedException() : this->getSigned());
 	std::cout << "Brr" << std::endl;
 	std::cout << this->_target << " has been robotomized successfully 50% of the time" << std::endl;
 }

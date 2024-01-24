@@ -15,17 +15,13 @@ int main()
         form = &intern.makeForm("shrubbery creation", "A");
 		std::cout << (*form).getName() << std::endl;
 		std::cout << (*static_cast<ShrubberyCreationForm *>(form)).getTarget() << std::endl;
-		if (form)
-			delete form;
+		delete form;
         form = &intern.makeForm("robotomy request", "B");
-		if (form)
-			delete form;
+		delete form;
         form = &intern.makeForm("presidential pardon", "C");
-		if (form)
-			delete form;
+		delete form;
         form = &intern.makeForm("whatever", "D");
-		if (form)
-			delete form;
+		delete form;
     }
 	catch (const std::exception& e)
 	{
