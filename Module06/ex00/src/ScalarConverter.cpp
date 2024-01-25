@@ -25,21 +25,16 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 
 void ScalarConverter::convert(const std::string& literal)
 {
-	char charResult;
-	int intResult;
-	float floatResult;
-	double doubleResult;
 	double literalResult;
 
+	literalResult = std::strtod(literal.c_str(), NULL);
 	try {
-		literalResult = std::stold(literal);
 		if (literalResult > CHAR_MAX || literalResult < CHAR_MIN)
 			throw OutOfLimitsException();
-		charResult = std::stoi(literal);
-		if (!std::isprint(charResult))
+		if (!std::isprint(static_cast<int>(literalResult)))
 			std::cout << "char: Non displayable" << std::endl;
 		else
-			std::cout << "char: '" << charResult << "' " << std::endl;
+			std::cout << "char: '" << static_cast<char>(literalResult) << "' " << std::endl;
 	}
 	catch (const std::exception& e) {
 		std::cout << "char: impossible" << std::endl;
@@ -47,21 +42,20 @@ void ScalarConverter::convert(const std::string& literal)
 	try {
 		if (literalResult > INT_MAX || literalResult < INT_MIN)
 			throw OutOfLimitsException();
-		intResult = std::stoi(literal);
-		std::cout << "int: " << intResult << std::endl;
+		std::cout << "int: " << static_cast<int>(literalResult) << std::endl;
 	}
 	catch (const std::exception& e) {
 		std::cout << "int: impossible" << std::endl;
 	}
 	try {
-		floatResult = std::stof(literal);
-		std::cout << "float: " << std::fixed << std::setprecision(1) << floatResult << "f" << std::endl;
+		if (literalResult > __FLT_MAX__ || literalResult < -__FLT_MAX__)
+			throw OutOfLimitsException();
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(literalResult) << "f" << std::endl;
 	} catch (const std::exception& e) {
 		std::cout << "float: impossible" << std::endl;
 	}
 	try {
-		doubleResult = std::stod(literal);
-		std::cout << "double: " << doubleResult << std::endl;
+		std::cout << "double: " << literalResult << std::endl;
 	} catch (const std::exception& e) {
 		std::cout << "double: impossible" << std::endl;
 	}

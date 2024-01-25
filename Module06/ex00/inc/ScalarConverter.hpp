@@ -3,6 +3,7 @@
 
 # include <iostream>
 #include <iomanip>
+#include <climits>
 #include <limits>
 
 class ScalarConverter
