@@ -23,45 +23,83 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 	return (*this);
 }
 
-void ScalarConverter::convert(const std::string& literal)
+void ScalarConverter::convert(const std::string& input)
 {
-	double literalResult;
+	std::string limits[8] = {"inf", "+inf", "-inf", "inff", "+inff", "-inff", "nan", "nanf"};
+	bool is_inf = false;
+	bool is_nan = false;
+	bool is_valid = true;
 
-	literalResult = std::strtod(literal.c_str(), NULL);
-	try {
-		if (literalResult > CHAR_MAX || literalResult < CHAR_MIN)
-			throw OutOfLimitsException();
-		if (!std::isprint(static_cast<int>(literalResult)))
-			std::cout << "char: Non displayable" << std::endl;
-		else
-			std::cout << "char: '" << static_cast<char>(literalResult) << "' " << std::endl;
+	if (input.find_first_not_of("0123456789+-.ef") != std::string::npos)
+	{
+		bool is_limit = false;
+		for (int i = 0; i < 8; i++)
+			if (!limits[i].compare(input))
+				is_limit = true;
+		if (!is_limit)
+			is_valid = false;
 	}
-	catch (const std::exception& e) {
+	else if (input.find_first_of("ef") == 0)
+		is_valid = false;
+	else if (input.find_first_of("+-") == 0 && !std::isdigit(input.at(1)) && input.at(1) != '.')
+		is_valid = false;
+	if (input.find('.') != std::string::npos)
+	{
+		if (input.find('f') != std::string::npos)
+			input.substr(0, input.size() - 1);
+	}
+	else
+	{
+		if (input.find("inf") != std::string::npos)
+			is_inf = true;
+		else if (input.find("nan") != std::string::npos)
+			is_nan = true;
+	}
+
+	double value = std::atof(input.c_str());
+
+	 // Convert to char
+	if (value >= std::numeric_limits<char>::min() && value <= std::numeric_limits<char>::max() && is_valid) {
+		char c = static_cast<char>(value);
+		if (std::isprint(c))
+			std::cout << "char: '" << c << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+	} else {
 		std::cout << "char: impossible" << std::endl;
 	}
-	try {
-		if (literalResult > INT_MAX || literalResult < INT_MIN)
-			throw OutOfLimitsException();
-		std::cout << "int: " << static_cast<int>(literalResult) << std::endl;
+
+	// Convert to int
+	if (!is_nan && !is_inf && is_valid && value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max() && input.at(0) != '.') {
+		if ((input.at(0) == '-' || input.at(0) == '+') && input.at(1) == '.')
+			std::cout << "int: impossible" << std::endl;
+		else
+			std::cout << "int: " << static_cast<int>(value) << std::endl;
 	}
-	catch (const std::exception& e) {
+	else {
 		std::cout << "int: impossible" << std::endl;
 	}
-	try {
-		if (literalResult > __FLT_MAX__ || literalResult < -__FLT_MAX__)
-			throw OutOfLimitsException();
-		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(literalResult) << "f" << std::endl;
-	} catch (const std::exception& e) {
+
+	// Convert to float
+	if (!is_nan && is_valid) {
+		float f = (is_inf ? (input[0] == '-' ? -std::numeric_limits<float>::infinity() : std::numeric_limits<float>::infinity()) : static_cast<float>(value));
+		std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+	}
+	else if (is_nan && is_valid)
+		std::cout << "float: " << "nanf" << std::endl;
+	else {
 		std::cout << "float: impossible" << std::endl;
 	}
-	try {
-		std::cout << "double: " << literalResult << std::endl;
-	} catch (const std::exception& e) {
+
+	// Convert to double
+	if (!is_nan && is_valid) {
+		double d = is_inf ? (input[0] == '-' ? -std::numeric_limits<double>::infinity() : std::numeric_limits<double>::infinity()) : value;
+		std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+	}
+	else if (is_nan && is_valid){
+		std::cout << "float: " << "nan" << std::endl;
+	}
+	else {
 		std::cout << "double: impossible" << std::endl;
 	}
-}
-
-const char* ScalarConverter::OutOfLimitsException::what() const throw()
-{
-	return ("Out of limits");
 }

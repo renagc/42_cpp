@@ -4,16 +4,13 @@
 # include <iostream>
 #include <iomanip>
 #include <climits>
+#include <cctype>
+#include <cstdlib>
 #include <limits>
 
 class ScalarConverter
 {
 	public:
-		class OutOfLimitsException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter &other);
 		~ScalarConverter();
