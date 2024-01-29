@@ -6,12 +6,6 @@
 
 class C : public Base
 {
-	public:
-		C();
-		C(const C &other);
-		~C();
-
-		C &operator=(const C &other);
 };
 
 #endif

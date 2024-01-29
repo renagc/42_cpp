@@ -6,7 +6,7 @@ CXXFLAGS = -Wall -Wextra -Werror -I$(INC) -std=c++98 #-fsanitize=address -g
 
 INC = inc/
 
-SRC =	src/A.cpp	src/identify.cpp	src/generate.cpp	src/C.cpp	src/B.cpp	src/Base.cpp	src/main.cpp
+SRC =	src/identify.cpp	src/generate.cpp	src/Base.cpp	src/main.cpp
 
 OBJ =  $(SRC:.cpp=.o)
 
