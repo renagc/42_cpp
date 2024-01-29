@@ -11,7 +11,7 @@ class Span
 {
 	private:
 		std::vector<int> _v;
-		unsigned int _n;
+		unsigned int N;
 	public:
 		class FullVectorException : public std::exception
 		{
@@ -29,11 +29,16 @@ class Span
 		~Span();
 
 		Span &operator=(const Span &other);
+		int operator[](unsigned int n) const;
 
 		void addNumber(int n);
+		void addNumber(int low, int high);
 		unsigned int shortestSpan();
 		unsigned int longestSpan();
-		unsigned int getN() const;
+
+		const std::vector<int> &getVector() const;
 };
+
+std::ostream & operator<<( std::ostream& os, Span& other );
 
 #endif

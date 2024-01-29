@@ -1,36 +1,41 @@
 #include "../inc/Span.hpp"
 
-Span::Span() : _n(0)
+Span::Span() : N(0)
 {
-	std::cout << "Span: Default Constructor Called" << std::endl;
+	// std::cout << "Span: Default Constructor Called" << std::endl;
 }
 
-Span::Span(unsigned int n) : _n(n)
+Span::Span(unsigned int n) : N(n)
 {
-	std::cout << "Span: Default Constructor Called" << std::endl;
+	// std::cout << "Span: Default Constructor Called" << std::endl;
 }
 
-Span::Span(const Span &other) : _n(other._n)
+Span::Span(const Span &other) : N(other.N)
 {
-	this->_v = other._v;
 	*this = other;
-	std::cout << "Span: Copy Constructor Called" << std::endl;
+	// std::cout << "Span: Copy Constructor Called" << std::endl;
 }
 
 Span::~Span()
 {
-	std::cout << "Span: Destructor Called" << std::endl;
+	// std::cout << "Span: Destructor Called" << std::endl;
 }
 
 Span &Span::operator=(const Span &other)
 {
-	if (this != &other)
-	{
-		this->_v = other._v;
-		this->_n = other._n;
-	}
-	std::cout << "Span: Operator Called" << std::endl;
+	if (this->_v.size())
+		this->_v.clear();
+	this->_v = other._v;
+	this->N = other.N;
+	// std::cout << "Span: Operator Called" << std::endl;
 	return (*this);
+}
+
+int	Span::operator[](unsigned int n) const
+{
+	if (n >= _v.size())
+		throw FullVectorException();
+	return _v[n];
 }
 
 const char *Span::FullVectorException::what() const throw()
@@ -45,9 +50,19 @@ const char *Span::NoSpanFoundException::what() const throw()
 
 void Span::addNumber(int n)
 {
-	if (this->_v.size() == this->_n)
+	if (this->_v.size() == this->N)
 		throw Span::FullVectorException();
 	this->_v.push_back(n);
+}
+
+void	Span::addNumber(int low, int high)
+{
+	if (_v.size() == N)
+		throw FullVectorException();
+	unsigned int size = _v.size();
+	int span = high - low + 1;
+	for (unsigned int i = 0; i < N && size++ < N ; i++)
+		addNumber(rand() % span + low);
 }
 
 unsigned int Span::shortestSpan()
@@ -73,4 +88,17 @@ unsigned int Span::longestSpan()
 	std::vector<int>::iterator its = std::min_element(this->_v.begin(), this->_v.end());
 	std::vector<int>::iterator ite = std::max_element(this->_v.begin(), this->_v.end());
 	return (*ite - *its);
+}
+
+const std::vector<int> &Span::getVector() const
+{
+	return(_v);
+}
+
+std::ostream & operator<<( std::ostream& os, Span& other)
+{
+	std::vector<int> vec = other.getVector();
+	for (std::vector<int>::iterator it = vec.begin(); it != other.getVector().end(); it++)
+		std::cout << *it << " ";
+	return os;
 }

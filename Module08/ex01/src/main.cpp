@@ -17,5 +17,21 @@ int main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	try {
+		Span sp = Span(5);
+		std::vector<int> sp_copy;
+
+		sp.addNumber(5, 200);
+		sp_copy = sp.getVector();
+		for (size_t i = 0; i < sp_copy.size(); i++)
+			std::cout << sp_copy[i] << ", ";
+		std::cout << std::endl;
+		std::cout << "Filled (longest): " << sp.longestSpan() << std::endl;
+		std::cout << "Filled (shortest): " << sp.shortestSpan() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	return (0);
 }
