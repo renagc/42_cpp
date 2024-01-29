@@ -25,10 +25,13 @@ class Array
 		~Array();
 
 		Array &operator=(const Array &other);
-		T &operator[](unsigned int index);
+		T &operator[](int index);
+		T &operator[](int index) const;
 
-		unsigned int getSize() const;
+		unsigned int size() const;
 		void print() const;
 };
+
+# include "../src/Array.tpp"
 
 #endif
