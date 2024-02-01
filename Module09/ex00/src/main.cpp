@@ -1,8 +1,8 @@
 #include <iostream>
-#include <chrono>
-#include <limits>
 #include <map>
 #include <iterator>
+#include <cstdlib>
+#include <climits>
 #include "BitcoinExchange.hpp"
 
 int verify_string(std::string str)
@@ -50,12 +50,12 @@ void parseLine(std::string line, BitcoinExchange &exchange)
 			day = date;
 			if (!verify_string(year) || !verify_string(month) || !verify_string(day))
 				throw std::invalid_argument("bad input => " + line);
-			if (std::stoi(year) > INT_MAX || std::stoi(year) < 0 || std::stoi(month) > 12 || std::stoi(month) < 1 || std::stoi(day) > 31 || std::stoi(day) < 1)
+			if (std::atoi(year.c_str()) > INT_MAX || std::atoi(year.c_str()) < 0 || std::atoi(month.c_str()) > 12 || std::atoi(month.c_str()) < 1 || std::atoi(day.c_str()) > 31 || std::atoi(day.c_str()) < 1)
 				throw std::invalid_argument("bad input => " + line);
 		}
 		{
 			std::string value = line.substr(line.find(' ') + 3, line.length());
-			float d = std::stod(value);
+			float d = std::atof(value.c_str());
 			d < 0 ? throw std::invalid_argument("not a positive number.") : d;
 			d > 1000 ? throw std::invalid_argument("too large a number.") : d;
 			bool dot = false;
@@ -83,24 +83,12 @@ int main(int ac, char **av)
 {
 	try
 	{
+		BitcoinExchange btc("src/data.csv");
 		if (ac != 2)
-			throw std::invalid_argument("Wrong number of arguments");
-		BitcoinExchange exchange;
-
-		std::ifstream file;
-		file.open(av[1]);
-		if (!file)
-			throw std::invalid_argument("Failed to open file");
-	
-		std::string line;
-		std::string date;
-		std::getline(file, line);
-		while (std::getline(file, line))
-		{
-			parseLine(line, exchange);
-			if (file.eof())
-				break;
-		}
+			throw BitcoinExchange::ArgumentsException();
+		(void)ac;
+		(void)av;
+		// btc.printDatabase();
 	}
 	catch(const std::exception& e)
 	{
