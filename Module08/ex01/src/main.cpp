@@ -20,9 +20,11 @@ int main(void)
 	try {
 		Span sp = Span(5);
 		std::vector<int> sp_copy;
+		std::vector<int> ok(50);
 
-		sp.addNumber(5, 200);
-		sp_copy = sp.getVector();
+		for (size_t i = 0; i < sp_copy.size(); i++)
+			ok.at(i) = i * 10;
+
 		for (size_t i = 0; i < sp_copy.size(); i++)
 			std::cout << sp_copy[i] << ", ";
 		std::cout << std::endl;

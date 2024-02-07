@@ -6,6 +6,7 @@
 # include <vector>
 # include <algorithm>
 # include <limits>
+# include <iterator>
 
 class Span
 {
@@ -32,7 +33,7 @@ class Span
 		int operator[](unsigned int n) const;
 
 		void addNumber(int n);
-		void addNumber(int low, int high);
+		void addNumber(std::vector<int>::iterator itb, std::vector<int>::iterator ite);
 		unsigned int shortestSpan();
 		unsigned int longestSpan();
 

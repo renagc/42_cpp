@@ -14,7 +14,8 @@ Base* generate()
 
     int choice = std::rand() % 3;
 
-    switch (choice) {
+    switch (choice)
+    {
         case 0:
             return new A();
 			break;
