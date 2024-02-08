@@ -18,15 +18,25 @@ int main(void)
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		Span sp = Span(5);
-		std::vector<int> sp_copy;
-		std::vector<int> ok(50);
+		int N = 10;
+		Span sp = Span(N);
+		std::vector<double> example;
+		std::vector<double>::iterator it;
+		std::vector<double> example2;
+		std::vector<double>::iterator it2;
 
-		for (size_t i = 0; i < sp_copy.size(); i++)
-			ok.at(i) = i * 10;
+		example2.push_back(-9);
+		example2.push_back(-10);
+		for (size_t i = 0; i < 5; i++)
+			example.push_back((i + 1) * 3);
+		for (size_t i = 0; i < static_cast<size_t>(N / 2); i++)
+			sp.addNumber(i * 10);
+		it = example.begin();
+		sp.addNumber(example.begin(), example.end());
 
-		for (size_t i = 0; i < sp_copy.size(); i++)
-			std::cout << sp_copy[i] << ", ";
+		//print span vector
+		for (size_t i = 0; i < sp.getVector().size(); i++)
+			std::cout << "span_vector[" << i << "]: " << sp.getVector().at(i) << std::endl;
 		std::cout << std::endl;
 		std::cout << "Filled (longest): " << sp.longestSpan() << std::endl;
 		std::cout << "Filled (shortest): " << sp.shortestSpan() << std::endl;

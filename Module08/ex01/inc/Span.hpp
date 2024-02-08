@@ -33,11 +33,22 @@ class Span
 		int operator[](unsigned int n) const;
 
 		void addNumber(int n);
-		void addNumber(std::vector<int>::iterator itb, std::vector<int>::iterator ite);
 		unsigned int shortestSpan();
 		unsigned int longestSpan();
 
 		const std::vector<int> &getVector() const;
+
+		template<typename Iterator>
+		void addNumber(Iterator begin, Iterator end)
+		{
+			if (std::distance(begin, end) < 0)
+				return ;
+			while (begin != end)
+			{
+				addNumber(static_cast<int>(*begin));
+				begin++;
+			}
+		}
 };
 
 std::ostream & operator<<( std::ostream& os, Span& other );
