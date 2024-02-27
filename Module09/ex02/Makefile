@@ -6,7 +6,7 @@ CXXFLAGS = -Wall -Wextra -Werror -I$(INC) -std=c++98 #-fsanitize=address -g
 
 INC = inc/
 
-SRC = src/main.cpp	src/RPN.cpp
+SRC = src/main.cpp	src/PmergeMe.cpp
 
 OBJ =  $(SRC:.cpp=.o)
 
